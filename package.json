@@ -1,0 +1,17 @@
+{
+  "name": "auction-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "package": "serverless package"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^3.23.0"
+  },
+  "dependencies": {
+    "serverless-offline": "^12.0.4"
+  }
+}
