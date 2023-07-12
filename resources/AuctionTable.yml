@@ -19,6 +19,6 @@ AuctionsTable:
               - AttributeName: status
                 KeyType: HASH
               - AttributeName: endingAt
-                keyType: RANGE
+                KeyType: RANGE
             Projection:
               ProjectionType: ALL

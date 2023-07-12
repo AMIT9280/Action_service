@@ -1,5 +1,8 @@
+const {getEndedAuctions} =  require('../lib/getEndedAuctions')
+
 async function processAuction(event,context){
-    console.log('processing Auction');
+    const auctionsToClose = await getEndedAuctions();
+    console.log(auctionsToClose);
 }
 
 module.exports.handler = processAuction

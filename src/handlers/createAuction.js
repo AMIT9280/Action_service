@@ -2,12 +2,14 @@ const { v4: uuidv4 } = require('uuid');
 const AWS = require('aws-sdk');
 const commonMiddleware = require('../lib/commonMiddleware');
 const createError =  require('http-errors')
+const validator = require('@middy/validator');
+const createAuctionSchema =  require("../lib/schemas/createAuctionSchema")
 
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 async function createAuction(event, context) {
   const {title} = event.body;
-
+  const {email} = event.requestContext.authorizer;
   const now = new Date();
   const endDate = new Date();
   endDate.setHours(now.getHours() + 1)
@@ -19,7 +21,8 @@ async function createAuction(event, context) {
     endingAt: endDate.toISOString(),
     highestBid:{
         amount: 0
-    }
+    },
+    seller: email,
   }
 console.log(process.env.AUCTIONS_TABLE_NAME);
 try{
@@ -39,4 +42,5 @@ try{
 
 //  export const handler = createAuction;
  module.exports.handler = commonMiddleware.handler(createAuction)
+ .use(validator({inputSchema: createAuctionSchema}));
 
