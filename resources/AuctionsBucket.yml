@@ -2,21 +2,37 @@ AuctionsBucket:
   Type: AWS::S3::Bucket
   Properties:
     BucketName: ${self:custom.AuctionsBucket.name}
+    # PublicAccessBlockConfiguration:
+    #     BlockPublicAcls: false
+    #     BlockPublicPolicy: true
+    #     IgnorePublicAcls: false
+    #     RestrictPublicBuckets: true
     LifecycleConfiguration:
       Rules:
         - Id: ExpirePictures
           Status: Enabled
           ExpirationInDays: 1
-
-AuctionsBucketPolicy:
-  Type:  AWS::S3::BucketPolicy
-  Properties:
-    Bucket: !Ref AuctionsBucket
-    PolicyDocument: 
-      Statement:
-        - Sid: PublicRead
-          Effect: Allow
-          Principal: '*'
-          Action:
-            - s3:GetObject
-          Resource: arn:aws:s3:::${self:custom.AuctionsBucket.name}/*
+    
+# AuctionsBucketPolicy:
+#   Type:  AWS::S3::BucketPolicy
+#   Properties:
+#     Bucket: !Ref AuctionsBucket
+#     OwnershipControls:
+#       Rules:
+#         - ObjectOwnership: ObjectWriter
+#     PublicAccessBlockConfiguration:
+#       BlockPublicAcls: false
+#     BucketName: ${self:custom.AuctionsBucket.name}
+      # Statement:
+      #   - Sid: PublicRead
+      #     Effect: Allow
+      #     Principal: '*'
+      #     Action:
+      #       - s3:GetObject
+      #     Resource: arn:aws:s3:::${self:custom.AuctionsBucket.name}/*
+      #   - Sid: AllowPutBucketPolicy
+      #     Effect: Allow
+      #     Principal: '*'
+      #     Action:
+      #       - s3:PutBucketPolicy
+      #     Resource: arn:aws:s3:::${self:custom.AuctionsBucket.name}

@@ -842,6 +842,13 @@
   resolved "https://registry.npmjs.org/@middy/core/-/core-4.5.3.tgz"
   integrity sha512-S6dV1xpfMRTDa0xPKNUAloeo7ZFvUd5VrKu6eQ3r5k0umHeQCPO+37fuVOBzn3C0yY+wy4sdllcHsnQZcBOarg==
 
+"@middy/http-cors@^4.5.5":
+  version "4.5.5"
+  resolved "https://registry.yarnpkg.com/@middy/http-cors/-/http-cors-4.5.5.tgz#a20d5d1e62840a01ce9c7d4f4985e4a1c52b6fe2"
+  integrity sha512-gbbduePUTismeQwDtXJC4Gxg+3fbyhNRjr8zjxcuqPiSm57NLyTPk67m0O3CpZy13kpM2GIvsW5/8oYR8UTihw==
+  dependencies:
+    "@middy/util" "4.5.5"
+
 "@middy/http-error-handler@^4.5.3":
   version "4.5.3"
   resolved "https://registry.npmjs.org/@middy/http-error-handler/-/http-error-handler-4.5.3.tgz"

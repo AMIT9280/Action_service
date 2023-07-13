@@ -13,6 +13,7 @@ async function createAuction(event, context) {
   const now = new Date();
   const endDate = new Date();
   endDate.setHours(now.getHours() + 1)
+
   const auction = {
     id:uuidv4(),
     title,
@@ -24,7 +25,7 @@ async function createAuction(event, context) {
     },
     seller: email,
   }
-console.log(process.env.AUCTIONS_TABLE_NAME);
+
 try{
  await dynamodb.put({
       TableName: process.env.AUCTIONS_TABLE_NAME,
@@ -42,5 +43,5 @@ try{
 
 //  export const handler = createAuction;
  module.exports.handler = commonMiddleware.handler(createAuction)
- .use(validator({inputSchema: createAuctionSchema}));
+ .use(validator({eventSchema: createAuctionSchema()}));
 

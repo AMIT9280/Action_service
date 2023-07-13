@@ -1,6 +1,7 @@
 const AWS = require('aws-sdk');
-const commonMiddleware = require('../lib/commonMiddleware');
 const createError =  require('http-errors')
+const commonMiddleware = require('../lib/commonMiddleware');
+
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 async function getAuctionById(id){
